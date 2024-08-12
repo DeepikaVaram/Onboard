@@ -5,6 +5,11 @@ view: order_items {
   sql_table_name: demo_db.order_items ;;
   drill_fields: [id]
 
+  dimension: status {
+    type: string
+    sql: ${TABLE}.status;;
+  }
+
   # This primary key is the unique key for this table in the underlying database.
   # You need to define a primary key in a view in order to join to other views.
 

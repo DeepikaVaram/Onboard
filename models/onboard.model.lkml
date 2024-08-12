@@ -132,6 +132,10 @@ explore: orders {
 }
 
 explore: order_items {
+  always_filter: {
+    filters: [order_items.status: "Pending", users.state: "Alabama"]
+  }
+
   join: orders {
     type: left_outer
     sql_on: ${order_items.order_id} = ${orders.id} ;;
