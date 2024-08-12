@@ -7,6 +7,10 @@ include: "/views/**/*.view.lkml"
 # Datagroups define a caching policy for an Explore. To learn more,
 # use the Quick Help panel on the right to see documentation.
 
+access_grant: sample {
+  user_attribute: onboarding_new
+  allowed_values: ["Deepika"]
+}
 datagroup: onboard_default_datagroup {
   # sql_trigger: SELECT MAX(id) FROM etl_log;;
   max_cache_age: "1 hour"
@@ -255,7 +259,7 @@ explore: testing_blob_type {}
 explore: test_space_in_column_name {}
 
 explore: users {
-
+ required_access_grants: [sample]
 }
 
 explore: user_data {
