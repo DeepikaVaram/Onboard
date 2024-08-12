@@ -9,10 +9,7 @@ view: order_items {
     type: string
     sql: ${TABLE}.status;;
   }
-  dimension: created_date{
-    type: number
-    sql: ${TABLE}.created_date ;;
-  }
+
 
   # This primary key is the unique key for this table in the underlying database.
   # You need to define a primary key in a view in order to join to other views.
@@ -50,10 +47,10 @@ view: order_items {
   # Dates and timestamps can be represented in Looker using a dimension group of type: time.
   # Looker converts dates and timestamps to the specified timeframes within the dimension group.
 
-  dimension_group: returned {
+  dimension_group: created {
     type: time
     timeframes: [raw, time, date, week, month, quarter, year]
-    sql: ${TABLE}.returned_at ;;
+    sql: ${TABLE}.created_at ;;
   }
 
   dimension: sale_price {

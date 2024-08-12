@@ -124,6 +124,7 @@ explore: inventory_items {
 explore: map_layer {}
 
 explore: orders {
+
   join: users {
     type: left_outer
     sql_on: ${orders.user_id} = ${users.id} ;;
@@ -132,9 +133,11 @@ explore: orders {
 }
 
 explore: order_items {
-  sql_always_where: ${created_date} >= '2021-01-01' ;;
-
-  join: orders {
+ conditionally_filter: {
+  filters: [order_items.created_date: "3 years"]
+  unless: [users.id, users.state]
+ }
+ join: orders {
     type: left_outer
     sql_on: ${order_items.order_id} = ${orders.id} ;;
     relationship: many_to_one
@@ -255,7 +258,9 @@ explore: testing_blob_type {}
 
 explore: test_space_in_column_name {}
 
-explore: users {}
+explore: users {
+
+}
 
 explore: user_data {
   join: users {
