@@ -132,9 +132,7 @@ explore: orders {
 }
 
 explore: order_items {
-  always_filter: {
-    filters: [order_items.status: "Pending", users.state: "Alabama"]
-  }
+  sql_always_where: ${created_date} >= '2021-01-01' ;;
 
   join: orders {
     type: left_outer

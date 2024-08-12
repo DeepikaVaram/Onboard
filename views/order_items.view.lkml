@@ -9,6 +9,10 @@ view: order_items {
     type: string
     sql: ${TABLE}.status;;
   }
+  dimension: created_date{
+    type: number
+    sql: ${TABLE}.created_date ;;
+  }
 
   # This primary key is the unique key for this table in the underlying database.
   # You need to define a primary key in a view in order to join to other views.
